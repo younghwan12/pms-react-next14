@@ -53,6 +53,6 @@ NODE_ENV=production yarn install 또는 yarn install --production
 
 ## 참고
 * 깃 커밋메시지 설정 
-  * git config --global core.editor code --wait
+  * git config commit.template .gitmessage.txt
 
 
