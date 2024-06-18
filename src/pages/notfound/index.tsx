@@ -7,7 +7,7 @@ import { Page } from '../../../types/types';
 
 const NotFoundPage: Page = () => {
     return (
-        <div className='flex items-center justify-center min-h-full flex-col'>
+        <div className='flex items-center justify-center min-h-screen flex-col'>
             <h2>Error</h2>
             <Link href='/'>History Back</Link>
         </div>
