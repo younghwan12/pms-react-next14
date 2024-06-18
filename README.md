@@ -52,7 +52,7 @@ NODE_ENV=production yarn install 또는 yarn install --production
     * ^ (carot) : 최상위 버전의 업데이트까지 자유롭게 허용.
 
 ## 참고
-* npm 과의 차이 
-  * [cli difference cheetshet](https://shift.infinite.red/npm-vs-yarn-cheat-sheet-8755b092e5cc)
-  * [Yarn vs npm](https://www.sitepoint.com/yarn-vs-npm/)
-  * [Migrating from npm (official site) ](https://yarnpkg.com/en/docs/migrating-from-npm)
+* 깃 커밋메시지 설정 
+  * git config --global core.editor code --wait
+
+
