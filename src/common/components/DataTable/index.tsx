@@ -55,6 +55,7 @@ const DataTable = <TValue extends DataTableValueArray>(props: ICustomDataTablePr
                 paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
                 width={"100%"}
                 emptyMessage="데이터가 없습니다."
+                showGridlines
                 // rowsPerPageOptions={[5, 10, 25, 50]}
                 rows={rows}
                 {...props}
