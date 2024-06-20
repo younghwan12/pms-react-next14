@@ -10,6 +10,7 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "../redux/store";
 import { PrimeReactProvider } from "primereact/api";
+import ErrorDialog from "@/common/components/Dialog";
 type Props = AppProps & {
     Component: Page;
 };
@@ -19,6 +20,7 @@ export default function MyApp({ Component, pageProps }: Props) {
         return (
             <PrimeReactProvider>
                 <LayoutProvider>{Component.getLayout(<Component {...pageProps} />)}</LayoutProvider>
+                <ErrorDialog />
             </PrimeReactProvider>
         );
     } else {
@@ -31,6 +33,7 @@ export default function MyApp({ Component, pageProps }: Props) {
                                 <Component {...pageProps} />
                             </Layout>
                         </LayoutProvider>
+                        <ErrorDialog />
                     </PrimeReactProvider>
                 </PersistGate>
             </Provider>

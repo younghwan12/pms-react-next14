@@ -19,36 +19,6 @@ const DataTable = <TValue extends DataTableValueArray>(props: ICustomDataTablePr
     const [first, setFirst] = useState(0);
     const [rows, setRows] = useState(props.rowNums ? props.rowNums[0] : props.rows);
 
-    // const [tableCellSize, setTableCellSize] = useState<DataTableProps["size"]>("normal");
-
-    // const handleCellSizeBtn1 = useCallback(() => {
-    //     setTableCellSize(tableCellSize === "normal" ? "small" : "normal");
-    // }, [tableCellSize]);
-
-    // const handleRowNumChange = useCallback((newValue: number) => {
-    //     setRows(newValue);
-    // }, []);
-
-    // const handlePage = (e: DataTablePFSEvent) => {
-    //     setFirst(e.first);
-    //     props.onPage(e);
-    // };
-    // const isPaginatorTable = useMemo(() => {
-    //     if (totalRecords && totalRecords > 0) {
-    //         return true;
-    //     }
-    // }, [totalRecords]);
-
-    // const handleOnclick = (e) => {
-    //     if (
-    //         e.originalEvent.target.classList.contains("p-selection-column") ||
-    //         e.originalEvent.target.classList.contains("p-checkbox-icon")
-    //     )
-    //         return false;
-
-    //     props.onRowClick && props.onRowClick(e);
-    // };
-
     return (
         <>
             <PDataTable

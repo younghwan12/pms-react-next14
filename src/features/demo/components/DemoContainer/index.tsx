@@ -6,13 +6,13 @@ import { Button } from "primereact/button";
 
 const DemoContainer = () => {
     const [value, setValue] = useState<UserListReq[]>([]);
-    const { data, error } = useGetUserListQuery({
+    const { data, error, isFetching } = useGetUserListQuery({
         sp_uid: "20200611145500679038",
         del_yn: "N",
         page_startnum: 1,
         page_endnum: 10,
     });
-    const [findUser, { data: findData, isFetching }] = useLazyGetUserListQuery();
+    const [findUser, { data: findData }] = useLazyGetUserListQuery();
 
     const testFunc = () => {
         var data = {
@@ -27,9 +27,12 @@ const DemoContainer = () => {
     return (
         <>
             <Button label="test" onClick={testFunc} />
-            <DataTable loading={isFetching} size="small" value={findData && findData.list} rows={5}>
-                <Column field="id" header="ID"></Column>
-                <Column field="name" header="Name"></Column>
+            <DataTable loading={isFetching} size="small" value={data && data.list} rows={5}>
+                <Column field="company_nm" header="회사명"></Column>
+                <Column field="user_id" header="사용자 ID"></Column>
+                <Column field="group_code" header="권한"></Column>
+                <Column field="user_name" header="이름"></Column>
+                <Column field="user_status_name" header="상태"></Column>
             </DataTable>
         </>
     );
