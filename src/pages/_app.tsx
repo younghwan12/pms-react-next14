@@ -15,6 +15,9 @@ import ErrorDialog from "@/common/components/Dialog";
 // codemirror
 // import "codemirror/lib/codemirror.css";
 
+// reactflow
+import "reactflow/dist/style.css";
+
 type Props = AppProps & {
     Component: Page;
 };
