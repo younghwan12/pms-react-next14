@@ -4,7 +4,7 @@ import { useGetUserListQuery, useLazyGetUserListQuery } from "../../redux/usersA
 import { UserListReq } from "../../types";
 import { Button } from "primereact/button";
 
-const DemoContainer = () => {
+const CrudContainer = () => {
     const [value, setValue] = useState<UserListReq[]>([]);
     const { data, error, isFetching } = useGetUserListQuery({
         sp_uid: "20200611145500679038",
@@ -38,4 +38,4 @@ const DemoContainer = () => {
     );
 };
 
-export default DemoContainer;
+export default CrudContainer;

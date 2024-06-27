@@ -17,7 +17,18 @@ const AppMenu = () => {
         },
         {
             label: "Demo",
-            items: [{ label: "CRUD Table", icon: "pi pi-fw pi-search", to: "/demo", badge: "NEW" }],
+            items: [
+                {
+                    label: "CRUD Table",
+                    icon: "pi pi-fw pi-bookmark",
+                    to: "/demo/crud",
+                },
+                {
+                    label: "Drawio",
+                    icon: "pi pi-fw pi-bookmark",
+                    to: "/demo/drawio",
+                },
+            ],
         },
         {
             label: "Tree",
