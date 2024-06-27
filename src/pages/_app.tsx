@@ -11,6 +11,10 @@ import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "../redux/store";
 import { PrimeReactProvider } from "primereact/api";
 import ErrorDialog from "@/common/components/Dialog";
+
+// codemirror
+// import "codemirror/lib/codemirror.css";
+
 type Props = AppProps & {
     Component: Page;
 };
