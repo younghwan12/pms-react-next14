@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useStore, getStraightPath } from "reactflow";
 
-import { getEdgeParams } from "../../utils/getEdgeParams";
+import { getEdgeParams } from "../utils";
 
 // 타입 찾아서 수정요망..
 interface IFloatingEdgeTypes {

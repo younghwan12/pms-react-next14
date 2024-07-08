@@ -1,10 +1,10 @@
 import { useCallback } from "react";
 import { useStore, getStraightPath } from "reactflow";
 
-import { getEdgeParams } from "../../utils/getEdgeParams";
+import { getEdgeParams } from "../utils";
 
 // 타입 찾아서 수정요망..
-interface IStepEdgeTypes {
+interface IFloatingEdgeTypes {
     id: any;
     source: any;
     target?: any;
@@ -12,7 +12,7 @@ interface IStepEdgeTypes {
     style?: any;
 }
 
-function StepEdge({ id, source, target, markerEnd, style }: IStepEdgeTypes) {
+function FloatingEdge({ id, source, target, markerEnd, style }: IFloatingEdgeTypes) {
     const sourceNode = useStore(useCallback((store) => store.nodeInternals.get(source), [source]));
     const targetNode = useStore(useCallback((store) => store.nodeInternals.get(target), [target]));
 
@@ -32,4 +32,4 @@ function StepEdge({ id, source, target, markerEnd, style }: IStepEdgeTypes) {
     return <path id={id} className="react-flow__edge-path" d={edgePath} markerEnd={markerEnd} style={style} />;
 }
 
-export default StepEdge;
+export default FloatingEdge;
