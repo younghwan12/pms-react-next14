@@ -19,7 +19,7 @@ export const rtkErrorLogger: Middleware = (api: MiddlewareAPI) => (next) => (act
             }
             api.dispatch(
                 setError({
-                    errorCode: payload.data.message || "알수없는 오류",
+                    errorCode: (payload.data && payload?.data?.message) || "알수없는 오류",
                     // errorMessage: payload.data.message || "관리자에게 문의하세요.",
                     errorMessage: "관리자에게 문의하세요.",
                 })

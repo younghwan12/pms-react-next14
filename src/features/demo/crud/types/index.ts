@@ -1,7 +1,7 @@
 export interface UserListRes {
-    sp_uid?: string;
     id?: string;
     name?: string;
+    email?: string;
 }
 
 export interface UserListReq {

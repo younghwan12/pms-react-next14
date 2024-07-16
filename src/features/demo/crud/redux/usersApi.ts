@@ -4,17 +4,18 @@ import { UserListReq, UserListRes } from "../types";
 import { CommonApiResponse } from "@/common/types";
 
 const appTaggedApi = appApi.enhanceEndpoints({
-    addTagTypes: ["users"],
+    addTagTypes: ["user"],
 });
 
 const issuesMgtApi = appTaggedApi.injectEndpoints({
     endpoints: (builder) => ({
         getUserList: builder.query<CommonApiResponse<UserListRes>, UserListReq>({
             query: (query) => ({
-                url: `pt/test/users?${qs.stringify(query)}`,
+                // ?${qs.stringify(query)}
+                url: `/user`,
                 method: "GET",
             }),
-            providesTags: () => [{ type: "users" }],
+            providesTags: () => [{ type: "user" }],
         }),
     }),
     overrideExisting: true,
