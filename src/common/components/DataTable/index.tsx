@@ -36,3 +36,29 @@ const DataTable = <TValue extends DataTableValueArray>(props: ICustomDataTablePr
 };
 
 export default DataTable;
+
+// interface DataTableValueArray {
+//     [key: string]: any;
+// }
+
+// interface CustomDataTableProps<TValue extends DataTableValueArray> extends PDataTableProps<TValue> {
+//     customProp?: string;
+// }
+
+// const DataTable = <TValue extends DataTableValueArray>(props: CustomDataTableProps<TValue>) => {
+
+//     return (
+//         <>
+//             <PDataTable
+//                 paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
+//                 width={"100%"}
+//                 emptyMessage="데이터가 없습니다."
+//                 showGridlines
+//                 // rowsPerPageOptions={[5, 10, 25, 50]}
+//                 {...props}
+//                 paginator
+//             ></PDataTable>
+//         </>
+//     );
+// };
+// export default DataTable;

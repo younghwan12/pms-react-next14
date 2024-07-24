@@ -55,3 +55,10 @@
     transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
     outline-color: transparent;
 }
+
+/* Table */
+.p-datatable-emptymessage {
+    td {
+        text-align: center;
+    }
+}

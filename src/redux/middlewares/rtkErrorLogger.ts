@@ -12,7 +12,7 @@ interface RejectedActionPayload {
 export const rtkErrorLogger: Middleware = (api: MiddlewareAPI) => (next) => (action) => {
     if (isRejectedWithValue(action)) {
         const payload = action.payload as RejectedActionPayload; // 타입을 명시적으로 지정
-
+        console.log("error", payload);
         if (window !== undefined && payload) {
             if (payload.status === 404) {
                 return;

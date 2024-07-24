@@ -36,6 +36,41 @@ const AppMenu = () => {
             ],
         },
         {
+            label: "공정상세관리",
+            items: [
+                {
+                    label: "분석",
+                    icon: "pi pi-fw pi-bookmark",
+                    items: [
+                        {
+                            label: "요구사항관리",
+                            icon: "pi pi-fw pi-bookmark",
+                            to: "/sc/reqmgr",
+                        },
+                    ],
+                },
+                {
+                    label: "설계",
+                    icon: "pi pi-fw pi-bookmark",
+                    items: [
+                        {
+                            label: "요구사항관리",
+                            icon: "pi pi-fw pi-bookmark",
+                            to: "/sc/desmgr",
+                        },
+                    ],
+                },
+                {
+                    label: "개발",
+                    icon: "pi pi-fw pi-bookmark",
+                },
+                {
+                    label: "테스트",
+                    icon: "pi pi-fw pi-bookmark",
+                },
+            ],
+        },
+        {
             label: "Tree",
             items: [
                 {

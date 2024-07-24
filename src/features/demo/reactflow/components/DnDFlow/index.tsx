@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from "react";
+import React, { useRef, useCallback, useState } from "react";
 import ReactFlow, {
     ReactFlowProvider,
     addEdge,
@@ -9,6 +9,7 @@ import ReactFlow, {
     Node,
     Edge,
     MarkerType,
+    Background,
 } from "reactflow";
 
 import Sidebar from "../Sidebar";
@@ -25,6 +26,8 @@ import DefaultNode from "../nodes/DefaultNode";
 import TurboEdge from "../edges/TurboEdge";
 import FloatingEdge from "../edges/FloatingEdge";
 import FunctionIcon from "../nodes/FunctionIcon";
+import { Button } from "primereact/button";
+import ContextMenu from "../ContextMenu";
 
 const initialNodes: Node<TurboNodeData>[] = [
     {
@@ -39,12 +42,12 @@ const initialNodes: Node<TurboNodeData>[] = [
         type: "default",
         data: { title: "bundle", desc: "apiContents" },
     },
-    {
-        id: "r-3",
-        position: { x: 50, y: 250 },
-        type: "input",
-        data: { title: "readFile", desc: "sdk.ts" },
-    },
+    // {
+    //     id: "r-3",
+    //     position: { x: 50, y: 250 },
+    //     type: "input",
+    //     data: { title: "readFile", desc: "sdk.ts" },
+    // },
 ];
 
 const initialEdges: Edge[] = [
@@ -83,6 +86,8 @@ const DnDFlow = () => {
     const reactFlowWrapper = useRef(null);
     const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
     const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+    const [menu, setMenu] = useState<any>(null);
+    const ref = useRef<HTMLDivElement>(null);
     const { screenToFlowPosition } = useReactFlow();
 
     const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), []);
@@ -124,30 +129,61 @@ const DnDFlow = () => {
         [screenToFlowPosition]
     );
 
+    const onNodeContextMenu = useCallback(
+        (event, node) => {
+            // Prevent native context menu from showing
+            event.preventDefault();
+
+            // Calculate position of the context menu. We want to make sure it
+            // doesn't get positioned off-screen.
+            if (ref.current) {
+                const pane = ref.current?.getBoundingClientRect();
+                setMenu({
+                    id: node.id,
+                    top: event.clientY < pane.height - 200 && event.clientY,
+                    left: event.clientX < pane.width - 200 && event.clientX,
+                    right: event.clientX >= pane.width - 200 && pane.width - event.clientX,
+                    bottom: event.clientY >= pane.height - 200 && pane.height - event.clientY,
+                });
+            }
+        },
+        [setMenu]
+    );
+
+    const onPaneClick = useCallback(() => setMenu(null), [setMenu]);
+
     return (
-        <div className="dndflow" style={{ height: "70vh" }}>
-            <Sidebar />
-            <div className="reactflow-wrapper" ref={reactFlowWrapper}>
-                <ReactFlow
-                    nodes={nodes}
-                    edges={edges}
-                    onNodesChange={onNodesChange}
-                    onEdgesChange={onEdgesChange}
-                    onConnect={onConnect}
-                    onDrop={onDrop}
-                    onDragOver={onDragOver}
-                    edgeTypes={edgeTypes}
-                    nodeTypes={nodeTypes}
-                    defaultEdgeOptions={defaultEdgeOptions}
-                    snapToGrid={true}
-                    snapGrid={[25, 25]}
-                    zoomOnScroll={false}
-                    deleteKeyCode={["Delete", "BackSpace"]}
-                >
-                    <Controls />
-                </ReactFlow>
+        <>
+            <Button label="데이터" onClick={() => console.log({ nodes: nodes, edge: edges })} />
+            <div className="dndflow" style={{ height: "70vh" }}>
+                <Sidebar />
+                <div className="reactflow-wrapper" ref={reactFlowWrapper}>
+                    <ReactFlow
+                        ref={ref}
+                        nodes={nodes}
+                        edges={edges}
+                        onNodesChange={onNodesChange}
+                        onEdgesChange={onEdgesChange}
+                        onConnect={onConnect}
+                        onDrop={onDrop}
+                        onDragOver={onDragOver}
+                        edgeTypes={edgeTypes}
+                        nodeTypes={nodeTypes}
+                        defaultEdgeOptions={defaultEdgeOptions}
+                        snapToGrid={true}
+                        snapGrid={[25, 25]}
+                        zoomOnScroll={false}
+                        deleteKeyCode={["Delete", "BackSpace"]}
+                        onPaneClick={onPaneClick}
+                        onNodeContextMenu={onNodeContextMenu}
+                    >
+                        <Controls />
+                        <Background />
+                        {menu && <ContextMenu onClick={onPaneClick} {...menu} />}
+                    </ReactFlow>
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 

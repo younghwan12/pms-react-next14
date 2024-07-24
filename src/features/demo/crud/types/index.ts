@@ -1,14 +1,18 @@
-export interface UserListRes {
-    id?: string;
-    name?: string;
-    email?: string;
-}
+import { Paging } from "@/common/types";
 
-export interface UserListReq {
-    sp_uid?: string;
+export type ProjectListRes = {
+    projectNo?: string;
+    projectName?: string;
+    startDt?: string;
+    endDt?: string;
+    del_yn?: string;
+};
+
+export type ProjectListReq = Paging & {
+    projectNo?: string;
+    projectName?: string;
+    startDte?: string;
+    endDte?: string;
+    status?: string;
     del_yn: string;
-    id?: string;
-    name?: string;
-    page_startnum?: number;
-    page_endnum?: number;
-}
+};
