@@ -4,15 +4,15 @@ import appApi from "./appApi";
 
 import { persistReducer, persistStore } from "redux-persist"; //
 import storage from "redux-persist/lib/storage";
-
+import errorReducer from "./errorSlice";
+import { rtkErrorLogger } from "./middlewares";
 
 const reducers = combineReducers({
     [appApi.reducerPath]: appApi.reducer,
+    error: errorReducer, // Error Reducer 추가
 });
 
-const whiteListReducers = [
-    "user",
-];
+const whiteListReducers = ["user"];
 
 const persistConfig = {
     key: "root", // 저장소에 저장될 키 값
@@ -29,7 +29,7 @@ export const store = configureStore({
             serializableCheck: {
                 ignoredActions: ["persist/PERSIST"],
             },
-        }).concat(appApi.middleware),
+        }).concat(appApi.middleware, rtkErrorLogger),
 });
 
 export const persistor = persistStore(store);

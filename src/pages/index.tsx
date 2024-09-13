@@ -1,14 +1,15 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
+import { DataTable } from "@/common/components";
+import { Column } from "primereact/column";
+import AppWrapper from "@/layout/AppWrapper";
+import { Button } from "primereact/button";
+import { MainContent } from "@/features/main/components";
 
 export default function Home() {
-  return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div>hello </div>
-    </main>
-  );
+    return (
+        <AppWrapper>
+            <MainContent />
+        </AppWrapper>
+    );
 }

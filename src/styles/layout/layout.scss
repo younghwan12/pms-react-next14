@@ -1,4 +1,4 @@
-@import './_variables';
+@import "./_variables";
 @import "./_mixins";
 @import "./_main";
 @import "./_topbar";
@@ -10,3 +10,10 @@
 @import "./_utils";
 @import "./_typography";
 @import "./_tailwind";
+@import "./_drawio";
+@import "./_reactflow";
+// @import "./_reactflow2";
+
+* {
+    font-family: "NanumSquareNeo";
+}

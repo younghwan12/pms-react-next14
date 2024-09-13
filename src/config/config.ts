@@ -1,13 +1,12 @@
-
 const dev = {
     url: {
-        API_BASE_URL: "http://localhost:8301", //be
+        API_BASE_URL: "http://localhost:8080/",
     },
 };
 
 const prod = {
     url: {
-        API_BASE_URL: "http://localhost:8301", //be
+        API_BASE_URL: "http://localhost:8080/",
     },
 };
 

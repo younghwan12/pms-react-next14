@@ -18,7 +18,7 @@
     overflow: hidden;
     cursor: pointer;
     z-index: 999;
-    box-shadow: -.25rem 0 1rem rgba(0,0,0,.15);
+    box-shadow: -0.25rem 0 1rem rgba(0, 0, 0, 0.15);
 
     i {
         font-size: 2rem;
@@ -26,7 +26,7 @@
         transform: rotate(0deg);
         transition: transform 1s;
     }
-    
+
     &:hover {
         background: var(--primary-400);
     }
@@ -38,5 +38,27 @@
             padding-left: 2rem;
             padding-right: 2rem;
         }
+    }
+}
+
+.p-checkbox.p-highlight .p-checkbox-box {
+    border-color: #06b6d4;
+    background: #06b6d4;
+}
+.p-checkbox .p-checkbox-box {
+    border: 2px solid #d1d5db;
+    background: #ffffff;
+    width: 22px;
+    height: 22px;
+    color: #4b5563;
+    border-radius: 6px;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    outline-color: transparent;
+}
+
+/* Table */
+.p-datatable-emptymessage {
+    td {
+        text-align: center;
     }
 }
