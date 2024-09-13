@@ -14,6 +14,8 @@ const DrawioContainer: React.FC = () => {
     const [draft, setDraft] = useState<Draft | null>(null);
     const codeMirrorRef = useRef();
 
+    // const drawioURL = 'https://embed.diagrams.net/?embed=1&proto=json&spin=1&saveAndExit=1&noSaveBtn=1&noExitBtn=0';
+
     const [doc, setDoc] = useState<string>("# Hello, World!\n");
     const handleDocChange = useCallback((newDoc: string) => {
         setDoc(newDoc);

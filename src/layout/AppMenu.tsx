@@ -33,6 +33,11 @@ const AppMenu = () => {
                     icon: "pi pi-fw pi-bookmark",
                     to: "/demo/reactflow",
                 },
+                {
+                    label: "ReactFlow2",
+                    icon: "pi pi-fw pi-bookmark",
+                    to: "/demo/reactflow2",
+                },
             ],
         },
         {

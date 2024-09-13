@@ -140,6 +140,7 @@ const DnDFlow = () => {
                 const pane = ref.current?.getBoundingClientRect();
                 setMenu({
                     id: node.id,
+                    title: node.data.title,
                     top: event.clientY < pane.height - 200 && event.clientY,
                     left: event.clientX < pane.width - 200 && event.clientX,
                     right: event.clientX >= pane.width - 200 && pane.width - event.clientX,

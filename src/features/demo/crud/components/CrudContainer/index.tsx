@@ -4,23 +4,24 @@ import { DataTable } from "primereact/datatable";
 import { Dialog } from "primereact/dialog";
 import { InputText } from "primereact/inputtext";
 import { useEffect, useRef, useState } from "react";
-import { useGetProjectsQuery, useLazyGetProjectsQuery, usePostProjectsMutation } from "../../redux/projectApi";
+import { useGetProjectsQuery, usePostProjectsMutation } from "../../redux/projectApi";
 import { ProjectListReq, ProjectListRes } from "../../types";
 import { useForm } from "react-hook-form";
 import { Calendar } from "primereact/calendar";
 import { Dropdown } from "primereact/dropdown";
 import { Toast } from "primereact/toast";
 import { ConfirmDialog } from "primereact/confirmdialog";
+import { RootState } from "@/redux/store";
 
 const CrudContainer = () => {
     const [value, setValue] = useState<ProjectListRes[]>([]);
     const [visible, setVisible] = useState<boolean>(false);
-    // const { data, error, isLoading, isFetching } = useGetProjectsQuery({
-    //     del_yn: "N",
-    //     page_startnum: 1,
-    //     page_endnum: 10,
-    // });
-    const [getProject, { data }] = useLazyGetProjectsQuery();
+    const [getProject] = usePostProjectsMutation();
+    const { data } = useGetProjectsQuery({
+        del_yn: "N",
+        page_startnum: 1,
+        page_endnum: 10,
+    });
     const [postData] = usePostProjectsMutation();
     const [totalRecords, setTotalRecords] = useState(0);
     const [selectedDatas, setSelectedDatas] = useState<ProjectListRes[]>([]);
